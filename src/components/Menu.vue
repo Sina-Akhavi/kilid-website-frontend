@@ -1,4 +1,5 @@
 <template>
+
     <div class="city-search-menu">
         <small id='label-input'>Enter the city, area or district</small>
         <div class="button-input-div">
@@ -6,6 +7,7 @@
             <input type="text" name="input-city" id="" placeholder="e.g. Niavaran ">
         </div>
     </div>
+    
 </template>
 
 <script>
@@ -41,7 +43,7 @@ export default {
 
 .button-input-div input {
   margin-left: 2px;
-  height: 5vh;
+  height: 6vh;
 }
 
 </style>

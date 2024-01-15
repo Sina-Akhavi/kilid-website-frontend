@@ -4,7 +4,7 @@
     <div class="logo">
       <p>Kilid</p>
     </div>
-    
+
     <ul>
       <li><a href="#">Purchase</a></li>
       <li><a href="#">Sale</a></li>
@@ -13,6 +13,7 @@
       <li><a href="#">Housing market</a></li>
       <li><a href="#">Estate Agencies</a></li>
     </ul>
+
   </nav>
 </template>
 
@@ -24,14 +25,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 nav {
   width: 100%;
   height: 70px;
   line-height: 70px;
   padding: 0x 100px;
-  position: fixed;  
+  position: relative;  
   background-image: linear-gradient(#033747, #012733);
 }
 
