@@ -2,9 +2,9 @@
   <Navbar/>
   
   <router-link to="/"></router-link>
-  <router-link to="/about"></router-link>
-  <!-- <PageImage/> -->
-  
+  <router-link to="/estates"></router-link>
+  <router-link to="/agency-form"></router-link>
+
   <router-view/>
 </template>
 

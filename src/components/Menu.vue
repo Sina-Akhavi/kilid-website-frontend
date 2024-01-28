@@ -7,7 +7,7 @@
             <input type="text" name="input-city" id="" placeholder="e.g. Niavaran ">
         </div>
     </div>
-    
+
 </template>
 
 <script>

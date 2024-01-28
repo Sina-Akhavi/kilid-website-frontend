@@ -1,6 +1,6 @@
 <template>
   <div class="img_container">
-      <img src="../images/images.jpeg" alt="">
+      <img src="../assets/background.jpeg" alt="">
       <PageTitle/>
       <Menu/>
   </div>

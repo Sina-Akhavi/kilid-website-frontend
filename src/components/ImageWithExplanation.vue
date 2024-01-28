@@ -2,11 +2,12 @@
 
   <div class="image-explanation-container" v-for="house in houses" :key="house.path">
     <div class="image-container">
-      <img :src="house.path" alt="Image" />
+      <img :src="require(`../assets/${house.img}`)" alt="Image" />
+      
     </div>
 
     <div class="explanation-container">
-          
+      
       <p><b>explanation: </b>{{ house.explanation }}</p>
       <p class="price-p"><b>Price: </b> {{ house.price }}$</p>
       <p><b><i class="fas fa-map-marker-alt"></i>Address: </b> {{ house.address }} </p>
@@ -30,41 +31,36 @@ export default {
     return {
         houses: [
             {
-                path: "../images/images.jpeg",
+                img: 'background.jpeg',
                 explanation: "phase8 - 2 rooms",
                 price: 16600,
                 address: "16 Pasdaran, Tehran",
                 features: ['balcony', '135m', 'residential']
             },
             {
-                path: '../images/images1.jpeg',
-                explanation: "phase8 - 2 rooms",
-                price: 20000,
-                address: "18 niyavaran, Tehran",
-                features: ['balcony', '135m', 'residential']
-            },
-            {
-                path: "../images/images2.jpeg",
+                img: 'images2.jpeg',
                 explanation: "phase8 - 2 rooms",
                 price: 25000,
                 address: "25 Eslamshahr, Tehran",
                 features: ['lobby', '400', 'residential', 'negotiable']
             },
             {
-                path: "../images/images3.jpeg",
+                img: 'images3.jpeg',
                 explanation: "phase8 - 2 rooms",
                 price: 35700,
                 address: "14 Azadi, Esfahan",
                 features: ['2 rooms', 'parking', 'commercial']
             },
             {
-                path: "../images/images4.jpeg",
+                img: 'images4.jpeg',
                 explanation: "phase8 - 2 rooms",
                 price: 16600,
                 address: "16 Pasdaran, Tehran",
                 features: ['sports gym', '135m', 'residential']
             },
-        ]
+        ],
+
+        
     }
   }
 };

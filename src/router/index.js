@@ -1,6 +1,10 @@
 import { createRouter, createWebHashHistory } from "vue-router"
 import Home from '../views/Home.vue'
-import About from '../views/About.vue'
+import Estates from '../views/Estates.vue'
+import AgencyForm from '../views/AgencyForm.vue'
+import AgencyProfile from '../views/AgencyProfile.vue'
+import EstateForm from '../views/EstateForm.vue'
+
 
 const routes = [
     {
@@ -9,11 +13,29 @@ const routes = [
         component: Home 
     },
     {
-        path: '/about',
-        name: 'About',
-        component: About 
+        path: '/estates',
+        name: 'Estates',
+        component: Estates 
     },
-    
+    {
+        path: '/agency-form',
+        name: 'AgencyForm',
+        component: AgencyForm
+    },
+    {
+        // 'someroute?id=:id&name=:name`,
+        path: '/agency-profile',
+        name: 'AgencyProfile',
+        component: AgencyProfile,
+        // props: true
+
+    },
+    {
+        path: '/estate-form',
+        name: 'EstateForm',
+        component: EstateForm,
+
+    },
 ]
 
 const router = createRouter({
