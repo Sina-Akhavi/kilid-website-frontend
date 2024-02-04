@@ -4,6 +4,7 @@
   <router-link to="/"></router-link>
   <router-link to="/estates"></router-link>
   <router-link to="/agency-form"></router-link>
+  <router-link to="/login-user"></router-link>
 
   <router-view/>
 </template>

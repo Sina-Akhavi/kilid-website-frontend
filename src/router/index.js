@@ -4,6 +4,7 @@ import Estates from '../views/Estates.vue'
 import AgencyForm from '../views/AgencyForm.vue'
 import AgencyProfile from '../views/AgencyProfile.vue'
 import EstateForm from '../views/EstateForm.vue'
+import Login from '../views/Login.vue'
 
 
 const routes = [
@@ -23,17 +24,20 @@ const routes = [
         component: AgencyForm
     },
     {
-        // 'someroute?id=:id&name=:name`,
         path: '/agency-profile',
         name: 'AgencyProfile',
         component: AgencyProfile,
-        // props: true
-
     },
     {
         path: '/estate-form',
         name: 'EstateForm',
         component: EstateForm,
+
+    },
+    {
+        path: '/login-user',
+        name: 'Login',
+        component: Login,
 
     },
 ]

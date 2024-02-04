@@ -1,30 +1,28 @@
-
-
 <template>
   <div class="container">
     <img src="../assets/background.jpeg" alt="Agency Image" class="background-image">
     <div class="form-container">
       <h1>Agency Information Form</h1>
-      <form @submit.prevent="handleSubmit">
+      <form @submit.prevent="">
         <fieldset>
           <legend>Agency Details</legend>
           <label for="agencyName">Agency Name:</label>
-          <input type="text" id="agencyName" v-model="agency.name" required />
+          <input type="text" id="agencyName" v-model="agency.persianName" required />
           <br /><br />
 
           <label for="telephone">Telephone:</label>
-          <input type="tel" id="telephone" v-model="agency.phone" required />
+          <input type="text" id="telephone" v-model="agency.phone" required />
           <br /><br />
 
           <label for="city">City:</label>
           <input type="text" id="city" v-model="agency.city" required />
           <br /><br />
 
-          <label for="numEmployees">Number of Employees:</label>
+          <label for="numberOfEmployees">Number of Employees:</label>
           <input
             type="number"
-            id="numEmployees"
-            v-model="agency.numEmployees"
+            id="numberOfEmployees"
+            v-model="agency.numberOfEmployees"
             min="1"
             required
           />
@@ -37,7 +35,7 @@
           <input
             type="text"
             id="managerName"
-            v-model="manager.firstName"
+            v-model="manager.managerFirstName"
             required
           />
           <br /><br />
@@ -46,18 +44,28 @@
           <input
             type="text"
             id="managerFamilyName"
-            v-model="manager.lastName"
+            v-model="manager.managerLastName"
             required
           />
           <br /><br />
 
           <label for="managerTelephone">Telephone Number:</label>
           <input
-            type="tel"
+            type="text"
             id="managerTelephone"
-            v-model="manager.phone"
+            v-model="manager.managerPhoneNumber"
             required
           />
+          <br /><br />
+
+          <label for="managerUsername">Manager Username:</label>
+          <input
+            type="text"
+            id="managerUsername"
+            v-model="manager.managerUsername"
+            required
+          />
+
           <br /><br />
         </fieldset>
 
@@ -68,8 +76,7 @@
           <br /><br />
         </fieldset>
 
-        <button type="submit">Submit Information</button>
-        <!-- <button @click=handleSubmit>Submit Information</button> -->
+        <button @click="handleSubmit">Submit Information</button>
       </form>
     </div>
   </div>
@@ -81,15 +88,16 @@ export default {
   data() {
     return {
       agency: {
-        name: "",
+        persianName: "",
         phone: "",
         city: "",
-        numEmployees: 0,
+        numberOfEmployees: 0,
       },
       manager: {
-        firstName: "",
-        lastName: "",
-        phone: "",
+        managerFirstName: "",
+        managerLastName: "",
+        managerUsername: "",
+        managerPhoneNumber: "",
       },
       password: "",
     };
@@ -97,7 +105,55 @@ export default {
   methods: {
     handleSubmit() {
 
-      // this.$router.push({ name: 'AgencyProfile', query: { name: "Sina" } });  
+      console.log((JSON.stringify({
+          persianName: this.agency.persianName,
+          phone: this.agency.phone,
+          city: this.agency.city,
+          numberOfEmployees: this.agency.numberOfEmployees,
+          managerUsername: this.manager.managerUsername,
+          managerFirstName: this.manager.managerFirstName,
+          managerLastName: this.manager.managerLastName,
+          managerPhoneNumber: this.agency.managerPhoneNumber,
+          password: this.password,
+        })))
+
+
+      fetch("http://localhost:8080/agency/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", 
+        },
+        mode: "no-cors",
+
+        body: JSON.stringify({
+          persianName: this.agency.persianName,
+          phone: this.agency.phone,
+          city: this.agency.city,
+          numberOfEmployees: this.agency.numberOfEmployees,
+          managerUsername: this.manager.managerUsername,
+          managerFirstName: this.manager.managerFirstName,
+          managerLastName: this.manager.managerLastName,
+          managerPhoneNumber: this.agency.managerPhoneNumber,
+          password: this.password,
+        }),
+      })
+        .then((response) => {
+          if (response.status === 201) {
+            // Check for successful creation
+            return response.json(); // Parse the response body (assuming it's JSON)
+          } else {
+            throw new Error("Agency Registration Failed."); // Handle other status codes
+          }
+        })
+        .then((agency) => {
+          // Handle successful registration (e.g., redirect to login, show success message)
+          console.log("Agency created:", agency);
+          this.$router.push({ name: 'AgencyProfile'});  
+        })
+        .catch((error) => {
+          // Handle errors (e.g., display error message to user)
+          console.error(error);
+        });
     },
   },
 };
